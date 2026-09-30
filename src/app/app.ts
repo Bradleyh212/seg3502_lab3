@@ -18,7 +18,7 @@ import { ShoppingList } from './shopping-list/shopping-list';
 export class App {
   title = 'address-book';
 
-  showShoppingList = false;
+  showShoppingList = true;
 
   shoppingItems: string[] = [];
 
