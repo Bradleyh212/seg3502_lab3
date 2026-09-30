@@ -1,4 +1,33 @@
-<app-header></app-header>
-<div class="container">
-  <app-address-list></app-address-list>
+<div class="mode-switch">
+  <button
+    class="mode-option"
+    [class.active]="!showShoppingList"
+    (click)="showShoppingList = false">
+    Address Book
+  </button>
+
+  <button
+    class="mode-option"
+    [class.active]="showShoppingList"
+    (click)="showShoppingList = true">
+    Shopping List
+  </button>
 </div>
+
+@if (showShoppingList) {
+  <div class="container">
+    <app-shopping-input
+      (addItem)="addShoppingItem($event)">
+    </app-shopping-input>
+    <app-shopping-list
+      [items]="shoppingItems"
+      (removeItem)="removeShoppingItem($event)">
+    </app-shopping-list>
+  </div>
+} @else {
+  <app-header></app-header>
+
+  <div class="container">
+    <app-address-list></app-address-list>
+  </div>
+}
